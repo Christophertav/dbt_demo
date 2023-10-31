@@ -1,0 +1,33 @@
+version: 2
+
+sources: 
+  - name: gz_raw_data
+    description: Dataset for dbt demo
+    tables:
+      - name: raw_gz_product
+        description: Source table for products
+      - name: raw_gz_ship
+        description: Source table for ships
+      - name: raw_gz_sales
+        description:  Source table for sales
+
+models:
+  - name: stg_gz_raw_data__raw_gz_product
+    description: Model for products
+    tests:
+      - not_null:
+          column_name: products_id
+      - unique:
+          column_name: products_id
+  - name: stg_gz_raw_data__raw_gz_ship
+    description: Model for ships
+    tests:
+      - not_null:
+          column_name: orders_id
+      - unique:
+          column_name: orders_id
+  - name: stg_gz_raw_data__raw_gz_sales
+    description: Model for sales
+  - name: sales_products
+  
+  
